@@ -9,4 +9,4 @@
 A finite state machine driven by [Keltner Channel](https://stockcharts.com/school/doku.php?id=chart_school:technical_indicators:keltner_channels) crosses.
 
 
-![State machine](https://raw.githubusercontent.com/cbrown184/keltner-channel-tradebot/master/resources/FSM.jpg)
+![State machine](https://raw.githubusercontent.com/cbrown184/JKeltner/master/resources/FSM.jpg)
