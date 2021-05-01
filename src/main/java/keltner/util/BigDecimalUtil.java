@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 
 public class BigDecimalUtil {
 
@@ -54,5 +55,13 @@ public class BigDecimalUtil {
 
   public static boolean isGreaterThanOrEquals(BigDecimal a, BigDecimal b) {
     return a.compareTo(b) >= 0;
+  }
+
+  public static BigDecimal getAverage(List<BigDecimal> factors) {
+    if(factors.size() == 0) {
+      return BigDecimal.ZERO;
+    }
+    BigDecimal total = factors.stream().reduce(BigDecimal.ZERO, BigDecimal::add);
+    return total.divide(BigDecimal.valueOf(factors.size()), RoundingMode.HALF_UP);
   }
 }
