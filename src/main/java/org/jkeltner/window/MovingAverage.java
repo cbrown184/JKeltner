@@ -1,20 +1,19 @@
-package keltner.window;
+package org.jkeltner.window;
 
 import java.math.BigDecimal;
 import java.util.LinkedList;
 import java.util.List;
 
-public class MovingWindow {
+public class MovingAverage {
 
     private final int period;
-
     private final LinkedList<BigDecimal> window = new LinkedList<>();
 
     public List<BigDecimal> getValues() {
         return window;
     }
 
-    public MovingWindow(int period) {
+    public MovingAverage(int period) {
         this.period = period;
     }
 
@@ -25,8 +24,7 @@ public class MovingWindow {
         }
     }
 
-    public void addValue(List<BigDecimal> valueList) {
-        valueList.forEach(this::addValue);
+    public boolean isFull() {
+        return this.period == window.size();
     }
-
 }

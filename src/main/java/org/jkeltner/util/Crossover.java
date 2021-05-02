@@ -1,4 +1,4 @@
-package keltner.util;
+package org.jkeltner.util;
 
 import java.math.BigDecimal;
 

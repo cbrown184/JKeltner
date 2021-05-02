@@ -1,6 +1,5 @@
-package util;
+package org.jkeltner.util;
 
-import keltner.util.BigDecimalUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

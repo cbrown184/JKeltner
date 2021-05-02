@@ -1,4 +1,4 @@
-package keltner.util;
+package org.jkeltner.util;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -10,7 +10,7 @@ public class BigDecimalUtil {
 
   public static BigDecimal max(BigDecimal... bd) {
     return Arrays.stream(bd)
-        .min(Comparator.reverseOrder())
+        .max(Comparator.naturalOrder())
         .orElse(BigDecimal.ZERO);
   }
 
@@ -61,7 +61,7 @@ public class BigDecimalUtil {
     if(factors.size() == 0) {
       return BigDecimal.ZERO;
     }
-    BigDecimal total = factors.stream().reduce(BigDecimal.ZERO, BigDecimal::add);
-    return total.divide(BigDecimal.valueOf(factors.size()), RoundingMode.HALF_UP);
+    BigDecimal sum = factors.stream().reduce(BigDecimal.ZERO, BigDecimal::add);
+    return sum.divide(BigDecimal.valueOf(factors.size()), 12, RoundingMode.HALF_UP).stripTrailingZeros();
   }
 }
