@@ -18,7 +18,7 @@ class ExponentialMovingAverage {
     }
 
     Optional<BigDecimal> calculateEma(BigDecimal closingPrice) {
-        this.simpleMovingAverage.putPrice(closingPrice);
+        simpleMovingAverage.putPrice(closingPrice);
         Optional<BigDecimal> sma = simpleMovingAverage.getAverage();
 
         if(!sma.isPresent()) {
