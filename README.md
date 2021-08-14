@@ -1,6 +1,6 @@
 
 <div align="center">
-    <b><em>Keltner Channel Calculator</em></b><br>
+    <b><em>Keltner Channel</em></b><br>
 </div>
 
 
