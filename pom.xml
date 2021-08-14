@@ -20,6 +20,21 @@
         <url>http://github.com/cbrown184/JKeltner/tree/master</url>
     </scm>
 
+    <developers>
+        <developer>
+            <name>Christopher Brown</name>
+            <email>cbrown184@protonmail.com</email>
+        </developer>
+    </developers>
+
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
     <url>https://github.com/cbrown184/JKeltner</url>
 
 
