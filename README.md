@@ -45,7 +45,7 @@ The angle of the Keltner Channel also aids in identifying the trend direction. T
  // The calculator returns Optional.Empty() until the number of candles supplied is equal to the set period
  jKeltnerCalculator.calculate(1.45, 1.41, 1.42); // -> Optional.empty
  jKeltnerCalculator.calculate(1.46, 1.42, 1.43); // -> Optional.empty
- jKeltnerCalculator.calculate(1.51, 1.41, 1.42); // -> Optional[KeltnerBand{upperBand=1.54, midBand=1.42, lowerBand=1.30}]
+ jKeltnerCalculator.calculate(1.51, 1.41, 1.42); // -> Optional[KeltnerBand{upperBand=1.543333, midBand=1.423333, lowerBand=1.303333}]
 
 ```
 
