@@ -9,10 +9,7 @@ public class TrueRange {
     private Candle previousCandle;
 
     Optional<BigDecimal> calculate(Candle candle) {
-        return Stream.of(
-                newHighMinusNewLow(candle),
-                newHighMinusPreviousClose(candle),
-                newLowMinusPreviousClose(candle))
+        return Stream.of(newHighMinusNewLow(candle), newHighMinusPreviousClose(candle), newLowMinusPreviousClose(candle))
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .max(BigDecimal::compareTo);
@@ -27,16 +24,10 @@ public class TrueRange {
     }
 
     Optional<BigDecimal> newHighMinusPreviousClose(Candle candle) {
-        if(previousCandle == null){
-            return Optional.empty();
-        }
-        return Optional.of(candle.high.subtract(previousCandle.close).abs());
+        return previousCandle == null ? Optional.empty() : Optional.of(candle.high.subtract(previousCandle.close).abs());
     }
 
     Optional<BigDecimal> newLowMinusPreviousClose(Candle candle) {
-        if(previousCandle == null){
-            return Optional.empty();
-        }
-        return Optional.of(candle.low.subtract(previousCandle.close).abs());
+        return previousCandle == null ? Optional.empty() : Optional.of(candle.low.subtract(previousCandle.close).abs());
     }
 }

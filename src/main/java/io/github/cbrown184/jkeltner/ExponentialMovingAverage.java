@@ -30,7 +30,10 @@ class ExponentialMovingAverage {
             return Optional.of(previousCandle);
         }
 
-        BigDecimal ema = closingPrice.subtract(previousCandle).multiply(smoothing).add(previousCandle).setScale(scale, RoundingMode.HALF_UP);
+        BigDecimal ema = closingPrice.subtract(previousCandle)
+                .multiply(smoothing)
+                .add(previousCandle)
+                .setScale(scale, RoundingMode.HALF_UP);
         previousCandle = ema;
         return Optional.of(ema);
     }
