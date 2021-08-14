@@ -4,8 +4,6 @@
 </div>
 
 
-[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](http://opensource.org/licenses/MIT)
-
 <br>Big Decimal implementation.
 <br>Pure java - no additional libraries.
 <br>Works on Java 8 +.
