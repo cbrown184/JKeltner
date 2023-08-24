@@ -7,7 +7,7 @@ import org.mockito.Mockito;
 import java.math.BigDecimal;
 import java.util.Optional;
 
-import static org.mockito.Matchers.any;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 public class JKeltnerCalculatorTest {
