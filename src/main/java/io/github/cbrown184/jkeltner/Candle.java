@@ -19,5 +19,4 @@ class Candle {
         this.low = BigDecimal.valueOf(low);
         this.close = BigDecimal.valueOf(close);
     }
-
 }

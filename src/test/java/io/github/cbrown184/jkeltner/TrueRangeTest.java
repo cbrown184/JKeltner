@@ -20,7 +20,7 @@ public class TrueRangeTest {
     public void todaysHighMinusTodaysLowWhenYesterdayIsNull() {
         TrueRange trueRange = new TrueRange();
         Candle today = new Candle(100, 1, 2);
-        Assertions.assertEquals(Optional.of(new BigDecimal("99.0")), trueRange.calculate(null, today));
+        Assertions.assertEquals(Optional.of(new BigDecimal("99.0")), trueRange.calculate( today));
     }
 
     @Test

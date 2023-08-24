@@ -13,7 +13,7 @@ public class AverageTrueRangeTest {
     @Test
     public void averageTrueRangeReturnsOptionalOfEmptyWhenNotEnoughData() {
         AverageTrueRange averageTrueRange = new AverageTrueRange(10, 10);
-        Assertions.assertEquals(Optional.empty(), averageTrueRange.calculate(new Candle(10d, 10d, 10d)));
+        Assertions.assertEquals(Optional.empty(), averageTrueRange.calculateAverageTrueRange(new Candle(10d, 10d, 10d)));
     }
 
     @Test
@@ -49,7 +49,7 @@ public class AverageTrueRangeTest {
         Optional<BigDecimal> atr = Optional.empty();
         for(String s: reader.lines().collect(Collectors.toList())) {
             String[] line = s.split("\t");
-            atr = averageTrueRange.calculate( new Candle( new BigDecimal(line[0]), new BigDecimal(line[1]), new BigDecimal(line[2])));
+            atr = averageTrueRange.calculateAverageTrueRange( new Candle( new BigDecimal(line[0]), new BigDecimal(line[1]), new BigDecimal(line[2])));
         }
         return atr;
     }

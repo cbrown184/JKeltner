@@ -12,12 +12,19 @@ class AverageTrueRange {
         this.simpleMovingAverage = new SimpleMovingAverage(period, scale);
     }
 
-    Optional<BigDecimal> calculate(Candle candle) {
-        Optional<BigDecimal> trueRange = this.trueRange.calculate(candle);
-        if(trueRange.isPresent()) {
-            simpleMovingAverage.putPrice(trueRange.get());
-            return simpleMovingAverage.getAverage();
-        }
-        return Optional.empty();
+
+    /**
+     * Calculates the average true range for a given candle.
+     *
+     * @param candle the candle for which the average true range is to be calculated.
+     * @return an Optional containing the average true range if calculable, or an empty Optional otherwise.
+     */
+    public Optional<BigDecimal> calculateAverageTrueRange(Candle candle) {
+        return this.trueRange.calculate(candle)
+                .flatMap(tr -> {
+                    simpleMovingAverage.putPrice(tr);
+                    return simpleMovingAverage.getAverage();
+                });
     }
+
 }

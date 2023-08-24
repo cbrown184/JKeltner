@@ -58,7 +58,7 @@ public class JKeltnerCalculator {
 
     public Optional<KeltnerBand> calculate(Candle candle) {
         Optional<BigDecimal> ema = exponentialMovingAverage.calculateEma(candle.close);
-        Optional<BigDecimal> atr = averageTrueRange.calculate(candle);
+        Optional<BigDecimal> atr = averageTrueRange.calculateAverageTrueRange(candle);
         if(ema.isPresent() && atr.isPresent()) {
             BigDecimal emaBd = ema.get();
             BigDecimal atrBd = atr.get();
@@ -72,6 +72,8 @@ public class JKeltnerCalculator {
         }
         return Optional.empty();
     }
+
+
 
     public Optional<KeltnerBand> calculate(Double high, Double low, Double close) {
         nullCheck(high, low, close);

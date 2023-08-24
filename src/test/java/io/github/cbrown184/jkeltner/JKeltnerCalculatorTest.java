@@ -31,7 +31,7 @@ public class JKeltnerCalculatorTest {
         ExponentialMovingAverage ema = Mockito.mock(ExponentialMovingAverage.class);
         AverageTrueRange atr = Mockito.mock(AverageTrueRange.class);
         when(ema.calculateEma(any())).thenReturn(Optional.empty());
-        when(atr.calculate(any())).thenReturn(Optional.of(BigDecimal.ONE));
+        when(atr.calculateAverageTrueRange(any())).thenReturn(Optional.of(BigDecimal.ONE));
         JKeltnerCalculator jKeltnerCalculator = new JKeltnerCalculator(ema, atr, BigDecimal.ONE);
         Assertions.assertEquals(Optional.empty(), jKeltnerCalculator.calculate(BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ONE));
     }
@@ -41,7 +41,7 @@ public class JKeltnerCalculatorTest {
         ExponentialMovingAverage ema = Mockito.mock(ExponentialMovingAverage.class);
         AverageTrueRange atr = Mockito.mock(AverageTrueRange.class);
         when(ema.calculateEma(any())).thenReturn(Optional.of(BigDecimal.ONE));
-        when(atr.calculate(any())).thenReturn(Optional.empty());
+        when(atr.calculateAverageTrueRange(any())).thenReturn(Optional.empty());
         JKeltnerCalculator jKeltnerCalculator = new JKeltnerCalculator(ema, atr, BigDecimal.ONE);
         Assertions.assertEquals(Optional.empty(), jKeltnerCalculator.calculate(BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ONE));
     }
@@ -51,7 +51,7 @@ public class JKeltnerCalculatorTest {
         ExponentialMovingAverage ema = Mockito.mock(ExponentialMovingAverage.class);
         AverageTrueRange atr = Mockito.mock(AverageTrueRange.class);
         when(ema.calculateEma(any())).thenReturn(Optional.empty());
-        when(atr.calculate(any())).thenReturn(Optional.empty());
+        when(atr.calculateAverageTrueRange(any())).thenReturn(Optional.empty());
         JKeltnerCalculator jKeltnerCalculator = new JKeltnerCalculator(ema, atr, BigDecimal.ONE);
         Assertions.assertEquals(Optional.empty(), jKeltnerCalculator.calculate(BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ONE));
     }
@@ -61,7 +61,7 @@ public class JKeltnerCalculatorTest {
         ExponentialMovingAverage ema = Mockito.mock(ExponentialMovingAverage.class);
         AverageTrueRange atr = Mockito.mock(AverageTrueRange.class);
         when(ema.calculateEma(any())).thenReturn(Optional.of(BigDecimal.TEN));
-        when(atr.calculate(any())).thenReturn(Optional.of(BigDecimal.ONE));
+        when(atr.calculateAverageTrueRange(any())).thenReturn(Optional.of(BigDecimal.ONE));
         JKeltnerCalculator jKeltnerCalculator = new JKeltnerCalculator(ema, atr, BigDecimal.ONE);
         Optional<KeltnerBand> band = jKeltnerCalculator.calculate(BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ONE);
         Assertions.assertTrue(band.isPresent());

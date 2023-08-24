@@ -2,41 +2,44 @@ package io.github.cbrown184.jkeltner;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Arrays;
 import java.util.Optional;
 
 class SimpleMovingAverage {
 
-    private final BigDecimal period;
-    private final int ringBufferSize;
-    private int head = 0;
-    private final BigDecimal[] data;
+    private final int period;
     private final int scale;
-    private boolean isFull;
+    private final int ringBufferSize;
+    private final BigDecimal[] data;
+    private int head = 0;
+    private boolean isFull = false;
+    private BigDecimal runningTotal = BigDecimal.ZERO;
 
     public SimpleMovingAverage(int period, int scale) {
-        ringBufferSize = period;
-        this.period = BigDecimal.valueOf(period);
-        data = new BigDecimal[period];
+        this.period = period;
         this.scale = scale;
+        this.ringBufferSize = period;
+        this.data = new BigDecimal[period];
     }
 
     void putPrice(BigDecimal price) {
+        if (data[head] != null) {
+            runningTotal = runningTotal.subtract(data[head]);
+        }
         data[head] = price;
-        head ++;
-        if(head == ringBufferSize) {
+        runningTotal = runningTotal.add(price);
+
+        head++;
+        if (head == ringBufferSize) {
             head = 0;
             isFull = true;
         }
     }
 
     Optional<BigDecimal> getAverage() {
-        if(!isFull) {
+        if (!isFull) {
             return Optional.empty();
         }
-        return Arrays.stream(data)
-                .reduce(BigDecimal::add)
-                .map(bd -> bd.divide(period, scale, RoundingMode.HALF_UP));
+        return Optional.of(runningTotal.divide(BigDecimal.valueOf(period), scale, RoundingMode.HALF_UP));
     }
 
 }
